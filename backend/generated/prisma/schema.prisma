@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model user {
+  id                   String                @id @default(uuid())
+  username             String?               @db.Text
+  usersecret           String?               @db.Text
+  authority            String?               @db.Text
+  appointments         appointment[]
+  archivedAppointments archivedappointment[]
+}
+
+model appointment {
+  id             String  @id @default(uuid())
+  appointmentNum Int?
+  name           String?
+  phoneNumber    String?
+  address        String?
+  age            Int?
+  gender         String?
+  doctorName     String?
+  clinicName     String?
+  date           String?
+  time           String?
+  day            String?
+  period         String?
+  clinicId       String?
+  userId         String?
+  areaId         String?
+  clinic         clinic? @relation(fields: [clinicId], references: [id])
+  area           area?   @relation(fields: [areaId], references: [id])
+  user           user?   @relation(fields: [userId], references: [id])
+}
+
+model archivedappointment {
+  id             String  @id @default(uuid())
+  appointmentNum Int?
+  name           String?
+  phoneNumber    String?
+  address        String?
+  age            Int?
+  gender         String?
+  doctorName     String?
+  clinicName     String?
+  date           String?
+  time           String?
+  day            String?
+  period         String?
+  clinicId       String?
+  areaId         String?
+  userId         String?
+  doctorId       String?
+  clinic         clinic? @relation(fields: [clinicId], references: [id])
+  area           area?   @relation(fields: [areaId], references: [id])
+  user           user?   @relation(fields: [userId], references: [id])
+  doctor         doctor? @relation(fields: [doctorId], references: [id])
+}
+
+model area {
+  id                   String                @id @default(uuid())
+  name                 String                @unique
+  appointments         appointment[]
+  archivedAppointments archivedappointment[]
+}
+
+model clinic {
+  id                   String                @id @default(uuid())
+  name                 String                @unique
+  numberLimit          Int?
+  doctor               doctor[]
+  appointments         appointment[]
+  archivedAppointments archivedappointment[]
+}
+
+model doctor {
+  id                   String                @id @default(uuid())
+  name                 String?
+  clinicId             String?
+  clinic               clinic?               @relation(fields: [clinicId], references: [id])
+  archivedAppointments archivedappointment[]
+}
