@@ -127,60 +127,51 @@ exports.Prisma.UserScalarFieldEnum = {
   authority: 'authority'
 };
 
-exports.Prisma.AppointmentScalarFieldEnum = {
-  id: 'id',
-  appointmentNum: 'appointmentNum',
-  name: 'name',
-  phoneNumber: 'phoneNumber',
-  address: 'address',
-  age: 'age',
-  gender: 'gender',
-  doctorName: 'doctorName',
-  clinicName: 'clinicName',
-  date: 'date',
-  time: 'time',
-  day: 'day',
-  period: 'period',
-  clinicId: 'clinicId',
-  userId: 'userId',
-  areaId: 'areaId'
-};
-
-exports.Prisma.ArchivedappointmentScalarFieldEnum = {
-  id: 'id',
-  appointmentNum: 'appointmentNum',
-  name: 'name',
-  phoneNumber: 'phoneNumber',
-  address: 'address',
-  age: 'age',
-  gender: 'gender',
-  doctorName: 'doctorName',
-  clinicName: 'clinicName',
-  date: 'date',
-  time: 'time',
-  day: 'day',
-  period: 'period',
-  clinicId: 'clinicId',
-  areaId: 'areaId',
-  userId: 'userId',
-  doctorId: 'doctorId'
-};
-
-exports.Prisma.AreaScalarFieldEnum = {
+exports.Prisma.DepartmentScalarFieldEnum = {
   id: 'id',
   name: 'name'
 };
 
-exports.Prisma.ClinicScalarFieldEnum = {
+exports.Prisma.ItemScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  numberLimit: 'numberLimit'
+  departmentId: 'departmentId'
 };
 
-exports.Prisma.DoctorScalarFieldEnum = {
+exports.Prisma.CartScalarFieldEnum = {
+  id: 'id',
+  date: 'date',
+  day: 'day',
+  machineEnteringTime: 'machineEnteringTime',
+  machineLeavingTime: 'machineLeavingTime',
+  sterilazationState: 'sterilazationState',
+  departmentId: 'departmentId'
+};
+
+exports.Prisma.CartItemScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  clinicId: 'clinicId'
+  quantity: 'quantity',
+  date: 'date',
+  deliveringTime: 'deliveringTime',
+  preSterilizationClient: 'preSterilizationClient',
+  preSterilazationProvidor: 'preSterilazationProvidor',
+  toolState: 'toolState',
+  cartId: 'cartId'
+};
+
+exports.Prisma.DeviceScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.DeviseSesstionsScalarFieldEnum = {
+  id: 'id',
+  date: 'date',
+  startingTime: 'startingTime',
+  stoppingTime: 'stoppingTime',
+  itemsQuantity: 'itemsQuantity',
+  deviceId: 'deviceId'
 };
 
 exports.Prisma.SortOrder = {
@@ -200,65 +191,57 @@ exports.Prisma.userOrderByRelevanceFieldEnum = {
   authority: 'authority'
 };
 
-exports.Prisma.appointmentOrderByRelevanceFieldEnum = {
-  id: 'id',
-  name: 'name',
-  phoneNumber: 'phoneNumber',
-  address: 'address',
-  gender: 'gender',
-  doctorName: 'doctorName',
-  clinicName: 'clinicName',
-  date: 'date',
-  time: 'time',
-  day: 'day',
-  period: 'period',
-  clinicId: 'clinicId',
-  userId: 'userId',
-  areaId: 'areaId'
-};
-
-exports.Prisma.archivedappointmentOrderByRelevanceFieldEnum = {
-  id: 'id',
-  name: 'name',
-  phoneNumber: 'phoneNumber',
-  address: 'address',
-  gender: 'gender',
-  doctorName: 'doctorName',
-  clinicName: 'clinicName',
-  date: 'date',
-  time: 'time',
-  day: 'day',
-  period: 'period',
-  clinicId: 'clinicId',
-  areaId: 'areaId',
-  userId: 'userId',
-  doctorId: 'doctorId'
-};
-
-exports.Prisma.areaOrderByRelevanceFieldEnum = {
+exports.Prisma.departmentOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name'
 };
 
-exports.Prisma.clinicOrderByRelevanceFieldEnum = {
+exports.Prisma.itemOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  departmentId: 'departmentId'
+};
+
+exports.Prisma.cartOrderByRelevanceFieldEnum = {
+  date: 'date',
+  day: 'day',
+  machineEnteringTime: 'machineEnteringTime',
+  machineLeavingTime: 'machineLeavingTime',
+  sterilazationState: 'sterilazationState',
+  departmentId: 'departmentId'
+};
+
+exports.Prisma.cartItemOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  date: 'date',
+  deliveringTime: 'deliveringTime',
+  preSterilizationClient: 'preSterilizationClient',
+  preSterilazationProvidor: 'preSterilazationProvidor',
+  toolState: 'toolState'
+};
+
+exports.Prisma.deviceOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name'
 };
 
-exports.Prisma.doctorOrderByRelevanceFieldEnum = {
-  id: 'id',
-  name: 'name',
-  clinicId: 'clinicId'
+exports.Prisma.deviseSesstionsOrderByRelevanceFieldEnum = {
+  date: 'date',
+  startingTime: 'startingTime',
+  stoppingTime: 'stoppingTime',
+  deviceId: 'deviceId'
 };
 
 
 exports.Prisma.ModelName = {
   user: 'user',
-  appointment: 'appointment',
-  archivedappointment: 'archivedappointment',
-  area: 'area',
-  clinic: 'clinic',
-  doctor: 'doctor'
+  department: 'department',
+  item: 'item',
+  cart: 'cart',
+  cartItem: 'cartItem',
+  device: 'device',
+  deviseSesstions: 'deviseSesstions'
 };
 
 /**

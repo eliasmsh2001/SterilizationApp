@@ -4,24 +4,14 @@ import LoginPage from './pages/LoginPage'
 import RootLayout from './pages/RootLayout'
 import { QueryClientProvider } from '@tanstack/react-query'
 import UseAuthContext from './hooks/UseAuthContext'
-
 import url, { queryClient } from './util/apis/httpUrl'
-import { NewAppointmentPage } from './pages/NewAppointmentPage'
-import ArchivedAppointmentsPage from './pages/ArchivedAppointmentsPage'
 import { useEffect, useState } from 'react'
-import ReportsPage from './pages/ReportsPage'
-import YearlyTotalAppointments from './components/statistics/YearlyTotalAppointments'
-import AreasReport from './components/statistics/AreasReport'
 import NotfoundPage from './pages/NotfoundPage'
-import ClinicsReport from './components/statistics/ClinicsReport'
-import StatisticsPage from './pages/StatisticsPage'
-import GlobalReport from './components/reports/GlobalReport'
-import SettingsPage from './pages/SettingsPage'
-import UsersSettings from './components/settings/UsersSettings'
-import ClinicsSettings from './components/settings/ClinicsSettings'
-import AreasSettings from './components/settings/AreasSettings'
-import EditClinicPage from './components/settings/EditClinicPage'
 import { useLogout } from './hooks/UseLogout'
+import DepartmentPage from './pages/DepartmentPage'
+import DepartmentOverViewPage from './pages/departmentPageChildren/DepartmentOverViewPage'
+import AddNewMenu from './pages/departmentPageChildren/AddNewMenu'
+import EditMenuPage from './pages/departmentPageChildren/EditMenuPage'
 
 function App() {
   // const user = true
@@ -41,7 +31,7 @@ function App() {
       }
     }
 
-    const intervalId = setInterval(checkBackend, 5000) // Check every 5 seconds
+    const intervalId = setInterval(checkBackend, 15000) // Check every 15 seconds
     checkBackend() // Initial check
 
     return () => clearInterval(intervalId)
@@ -57,11 +47,10 @@ function App() {
                 !فشل الإتصال بالسيرفر
               </h1>
               <h1 className="text-lg font-bold text-mainText text-center">
-                الرجاء التأكد من الإتصال بالإنترنت والتأكد من الوصول الى السيرفر على العنوان
-                192.168.20.23
+                الرجاء التأكد من الاتصال بالعنوان 192.168.0.5
               </h1>
               <h2 className=" font-bold text-stone-600 text-center my-5">
-                ستتم إعادة المحاولة تلقائياً كل 5 ثواني
+                ستتم إعادة المحاولة تلقائياً كل 15 ثانية
               </h2>
               <button
                 onClick={() => setConnectionState('')}
@@ -78,40 +67,14 @@ function App() {
             <Route path="/" element={user ? <RootLayout /> : <Navigate to="/login" />}>
               <Route path="home" element={user ? <HomePage /> : <Navigate to="/login" />} />
               <Route
-                path="/newAppointment"
-                element={user ? <NewAppointmentPage /> : <Navigate to="/login" />}
-              />
-              {userAuthority === 'admin' && (
-                <>
-                  <Route path="/settings" element={<SettingsPage />}>
-                    <Route index element={<UsersSettings />} />
-                    <Route path="clinics" element={<ClinicsSettings />} />
-                    <Route path="clinics/:id" element={<EditClinicPage />} />
-                    <Route path="areas" element={<AreasSettings />} />
-                  </Route>
+                path="department"
+                element={user ? <DepartmentPage /> : <Navigate to="/login" />}
+              >
+                <Route index element={<DepartmentOverViewPage />} />
+                <Route path="newMenu" element={<AddNewMenu />} />
+                <Route path="editMenu" element={<EditMenuPage />} />
+              </Route>
 
-                  <Route
-                    path="/archivedAppointments"
-                    element={user ? <ArchivedAppointmentsPage /> : <Navigate to="/login" />}
-                  />
-                  <Route
-                    path="/statistics"
-                    element={user ? <StatisticsPage /> : <Navigate to="/login" />}
-                  >
-                    <Route index element={<YearlyTotalAppointments />} />
-                    <Route path="areas" element={<AreasReport />} />
-                    <Route path="clinics" element={<ClinicsReport />} />
-                  </Route>
-                  <Route
-                    path="/reports"
-                    element={user ? <ReportsPage /> : <Navigate to="/login" />}
-                  >
-                    <Route index element={<GlobalReport />} />
-                    {/* <Route path="areas" element={<AreasReport />} />
-                      <Route path="clinics" element={<ClinicsReport />} /> */}
-                  </Route>
-                </>
-              )}
               <Route path="*" element={<NotfoundPage />} />
             </Route>
           </Routes>

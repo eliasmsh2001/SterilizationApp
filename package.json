@@ -39,6 +39,7 @@
     "html2canvas": "^1.4.1",
     "jspdf": "^3.0.1",
     "jspdf-autotable": "^5.0.2",
+    "react-datepicker": "^8.7.0",
     "react-redux": "^9.2.0",
     "react-router": "^7.5.2",
     "react-to-pdf": "^2.0.1",

@@ -16,7 +16,7 @@ const LoginPage = () => {
         <img src={logo} className="size-44" alt="" />
         <div className="text-center font-bold text-mainText text-lg e">
           <h1>العيادة المجمعة زاوية الدهماني</h1>
-          <h1>الإستعلامات</h1>
+          <h1>قسم التعقيم</h1>
         </div>
 
         <LoginForm />

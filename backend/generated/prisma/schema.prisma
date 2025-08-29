@@ -1,6 +1,7 @@
 generator client {
-  provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+  output        = "../generated/prisma"
 }
 
 datasource db {
@@ -10,80 +11,63 @@ datasource db {
 }
 
 model user {
-  id                   String                @id @default(uuid())
-  username             String?               @db.Text
-  usersecret           String?               @db.Text
-  authority            String?               @db.Text
-  appointments         appointment[]
-  archivedAppointments archivedappointment[]
+  id         String  @id @default(uuid())
+  username   String? @db.Text
+  usersecret String? @db.Text
+  authority  String? @db.Text
 }
 
-model appointment {
-  id             String  @id @default(uuid())
-  appointmentNum Int?
-  name           String?
-  phoneNumber    String?
-  address        String?
-  age            Int?
-  gender         String?
-  doctorName     String?
-  clinicName     String?
-  date           String?
-  time           String?
-  day            String?
-  period         String?
-  clinicId       String?
-  userId         String?
-  areaId         String?
-  clinic         clinic? @relation(fields: [clinicId], references: [id])
-  area           area?   @relation(fields: [areaId], references: [id])
-  user           user?   @relation(fields: [userId], references: [id])
+model department {
+  id    String @id @default(uuid())
+  name  String @unique
+  items item[]
+  carts cart[]
 }
 
-model archivedappointment {
-  id             String  @id @default(uuid())
-  appointmentNum Int?
-  name           String?
-  phoneNumber    String?
-  address        String?
-  age            Int?
-  gender         String?
-  doctorName     String?
-  clinicName     String?
-  date           String?
-  time           String?
-  day            String?
-  period         String?
-  clinicId       String?
-  areaId         String?
-  userId         String?
-  doctorId       String?
-  clinic         clinic? @relation(fields: [clinicId], references: [id])
-  area           area?   @relation(fields: [areaId], references: [id])
-  user           user?   @relation(fields: [userId], references: [id])
-  doctor         doctor? @relation(fields: [doctorId], references: [id])
+model item {
+  id           String     @id @unique @default(uuid())
+  name         String
+  departmentId String
+  department   department @relation(fields: [departmentId], references: [id])
 }
 
-model area {
-  id                   String                @id @default(uuid())
-  name                 String                @unique
-  appointments         appointment[]
-  archivedAppointments archivedappointment[]
+model cart {
+  id                  Int        @id @unique @default(autoincrement())
+  date                String
+  day                 String
+  machineEnteringTime String?
+  machineLeavingTime  String?
+  sterilazationState  String?
+  departmentId        String
+  department          department @relation(fields: [departmentId], references: [id])
+  items               cartItem[]
 }
 
-model clinic {
-  id                   String                @id @default(uuid())
-  name                 String                @unique
-  numberLimit          Int?
-  doctor               doctor[]
-  appointments         appointment[]
-  archivedAppointments archivedappointment[]
+model cartItem {
+  id                       String @id @unique @default(uuid())
+  name                     String
+  quantity                 Int
+  date                     String
+  deliveringTime           String
+  preSterilizationClient   String
+  preSterilazationProvidor String
+  toolState                String
+  cartId                   Int
+  cart                     cart   @relation(fields: [cartId], references: [id])
 }
 
-model doctor {
-  id                   String                @id @default(uuid())
-  name                 String?
-  clinicId             String?
-  clinic               clinic?               @relation(fields: [clinicId], references: [id])
-  archivedAppointments archivedappointment[]
+model device {
+  id       String            @id @unique @default(uuid())
+  name     String
+  sessions deviseSesstions[]
+}
+
+model deviseSesstions {
+  id            Int    @id @unique @default(autoincrement())
+  date          String
+  startingTime  String
+  stoppingTime  String
+  itemsQuantity Int?
+  deviceId      String
+  device        device @relation(fields: [deviceId], references: [id])
 }
