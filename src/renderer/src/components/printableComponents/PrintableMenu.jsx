@@ -2,8 +2,8 @@ import clsx from 'clsx'
 
 export const PrintableMenu = ({ data, thisRef }) => {
   return (
-    <div ref={thisRef} className="relative h-screen w-screen">
-      <div dir="rtl" className="flex gap-4">
+    <div ref={thisRef} className="relative h-screen m-4 px-8 w-[45rem] flex flex-col items-center justify-start">
+      <div dir="rtl" className="flex gap-4 items-end justify-start w-full">
         <h1 className="bg-mainText text-white text-2xl font-bold min-w-24 text-center px-4 py-2 rounded-md">
           ID: {data?.id}
         </h1>
@@ -16,13 +16,13 @@ export const PrintableMenu = ({ data, thisRef }) => {
         </h1>
       </div>
 
-      <table dir="rtl" className="border-2 border-mainText w-[45rem] mt-8">
+      <table dir="rtl" className="border-2 border-mainText  mt-8">
         <thead className="bg-mainText text-white">
-          <tr className="border-2 border-mainText text-[0.6rem]">
+          <tr className="border-2 border-mainText text-[.6rem]">
             <th className="border-l-2 min-w-6"></th>
             <th className="w-80 border-l-2">اسم الصنف</th>
             <th className="w-16 border-l-2">العدد</th>
-            <th className="w-28 border-l-2">التاريخ</th>
+            <th className="w-32 border-l-2">التاريخ</th>
             <th className="w-24 border-l-2">وقت التسليم</th>
             <th className="w-40 border-l-2">المستلم قبل التعقيم</th>
             <th className="w-40 border-l-2">المسلم قبل التعقيم</th>
@@ -55,7 +55,7 @@ export const PrintableMenu = ({ data, thisRef }) => {
         </tbody>
       </table>
 
-      <div className="flex w-full flex-col gap-10 absolute bottom-20">
+      <div className="flex w-full flex-col gap-10 absolute bottom-24 right-8">
         <div className="flex flex-col gap-2 text-base text-mainText font-bold">
           <h1 dir="rtl">ساعة الدخول الى الجهاز: {data?.machineEnteringTime} </h1>
           <h1 dir="rtl">ساعة الخروج من الجهاز: {data?.machineLeavingTime} </h1>
