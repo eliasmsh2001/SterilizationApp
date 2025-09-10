@@ -14,6 +14,16 @@ const LoginForm = () => {
     await login(username, password)
   }
 
+  const handleShut = () => {
+    window.electronAPI.closeApp()
+      .then(() => {
+        console.log('App close request sent');
+      })
+      .catch((err) => {
+        console.error('Error closing app:', err);
+      })
+  }
+
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       {error && <div className="text-alert text-center font-bold">{error}</div>}
@@ -46,7 +56,7 @@ const LoginForm = () => {
       </button>
       <button
         type="button"
-        onClick={() => window.close()}
+        onClick={handleShut}
         className={`border-2 border-alert text-alert py-1 mt-1
           rounded-full font-bold hover:bg-alert hover:text-white 
           duration-200`}

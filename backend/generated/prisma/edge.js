@@ -226,7 +226,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\DEV\\sterilizationDepApp\\backend\\generated\\prisma",
+      "value": "/home/elias/dev/SterilizationApp/backend/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -235,7 +235,7 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "debian-openssl-3.0.x",
         "native": true
       },
       {
@@ -244,7 +244,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\DEV\\sterilizationDepApp\\backend\\prisma\\schema.prisma",
+    "sourceFilePath": "/home/elias/dev/SterilizationApp/backend/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

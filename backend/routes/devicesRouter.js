@@ -9,7 +9,18 @@ devicesRouter.get('/getDevices', async (req, res) => {
   const { date } = req.query
 
   const devices = await prisma.device.findMany({ include: { sessions: { where: { date } } } })
-  res.json(devices)
+
+  if (!devices || devices.length < 1){
+    await prisma.device.createMany({data: [
+      {name: "جهاز1"},
+      {name: "جهاز2"},
+      {name: "جهاز3"},
+    ]})
+  }
+  const sorted = devices.sort((a, b) => b.name.slice(b.name.length - 1, b.name.length) - a.name.slice(a.name.length - 1, a.name.length ))
+
+
+  res.json(sorted)
 })
 
 devicesRouter.post('/addSession', async (req, res) => {

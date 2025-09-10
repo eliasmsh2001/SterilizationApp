@@ -26,21 +26,21 @@ const AddNewMenu = () => {
   })
 
   return (
-    <div className="flex flex-col  relative">
+    <div className="flex flex-col relative pt-8">
       <h1 className="absolute right-8 -top-16 bg-mainBlue text-white text-2xl font-bold min-w-32 px-4 py-2 text-center rounded-md">
         {data?.name}
       </h1>
       <NewMenuFormMainData />
       <section className=" relative flex gap-4 flex-row-reverse h-[30rem]">
         {data?.items && (
-          <section className="w-[15rem] py-5 justify-end flex gap-3 flex-wrap max-h-[35rem] overflow-y-scroll">
+          <section className="w-[15rem] py-5 justify-start items-center flex-col flex gap-3  max-h-[35rem] overflow-y-scroll">
             {data.items?.map((item) => (
               <button
                 onClick={() => {
                   setError(null)
                   dispach(cartActions.handleAddItem({ name: item.name, id: item.id }))
                 }}
-                className="bg-mainBlue/25 text-mainBlue min-h-12 font-bold w-full rounded-full text-wrap py-1 px-6 hover:opacity-45  duration-200"
+                className="bg-mainBlue/25 text-mainBlue min-h-12 h-16 font-bold w-full rounded-full text-wrap py-1 px-6 hover:opacity-45  duration-200"
                 key={item?.id}
               >
                 {item?.name}
@@ -51,7 +51,7 @@ const AddNewMenu = () => {
 
         <div className="h-full w-1 bg-mainText " />
 
-        <div className="h-[30rem] overflow-scroll">
+        <div className="h-[30rem] relative overflow-scroll">
           <NewCartTable />
         </div>
       </section>

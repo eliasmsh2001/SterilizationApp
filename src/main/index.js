@@ -1,9 +1,10 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, dialog } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/images.jpg?asset'
-import { spawn } from 'child_process'
+import { spawn , exec} from 'child_process'
 import path from 'path'
+
 
 function createWindow() {
   // Create the browser window.
@@ -22,6 +23,9 @@ function createWindow() {
     mainWindow.show()
   })
 
+
+
+
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)
     return { action: 'deny' }
@@ -34,6 +38,40 @@ function createWindow() {
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
+
+   ipcMain.handle('close-app', async () => {
+  // You can add confirmation logic here if needed
+  let command;
+  if (process.platform === 'win32') {
+    // Windows
+    command = 'shutdown /s /t 0';
+  } else if (process.platform === 'darwin') {
+    // macOS
+    command = 'osascript -e \'tell app "System Events" to shut down\'';
+  } else {
+    // Linux (most common for sudo poweroff)
+    command = 'systemctl poweroff -i'; // Try this first
+    // Alternative: command = 'sudo poweroff';
+  }
+
+  // Execute the shutdown command
+  exec(command, (error, stdout, stderr) => {
+    if (error) {
+      console.error('Shutdown error:', error);
+      console.log('You may need to configure passwordless sudo for poweroff');
+      
+      // Provide instructions for Linux users
+      if (process.platform === 'linux') {
+        console.log('\nTo fix this on Linux, run:');
+        console.log('sudo visudo');
+        console.log('Then add this line (replace YOUR_USERNAME):');
+        console.log('YOUR_USERNAME ALL=(ALL) NOPASSWD: /usr/bin/systemctl poweroff');
+      }
+      return;
+    }
+    console.log('Shutdown command sent successfully:', stdout);
+  });
+});
 }
 
 // This method will be called when Electron has finished
@@ -70,6 +108,8 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
+
+
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

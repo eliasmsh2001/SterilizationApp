@@ -20,6 +20,10 @@ app.use('/items', itemsRouter)
 app.use('/carts', cartsRouter)
 app.use('/devices', devicesRouter)
 
+
+
+
+
 app.get('/', async (req, res) => {
   res.send('Hi I exist!')
 })

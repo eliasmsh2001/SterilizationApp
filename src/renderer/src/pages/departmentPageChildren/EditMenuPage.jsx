@@ -37,7 +37,7 @@ const EditMenuPage = () => {
       <NewMenuFormMainData />
       <section className=" relative flex gap-4 flex-row-reverse h-[30rem]">
         {data?.items && (
-          <section className="w-[15rem] py-5 justify-end flex gap-3 flex-wrap max-h-[35rem] overflow-y-scroll">
+          <section className="w-[15rem] py-5 justify-start items-center flex-col flex gap-3  max-h-[35rem] overflow-y-scroll">
             {data.items?.map((item) => (
               <button
                 onClick={() => {

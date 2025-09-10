@@ -13,7 +13,7 @@ itemsRouter.post('/newItem', async (req, res) => {
   }
 
   const existingItem = await prisma.item.findFirst({
-    where: { name, departmentId }
+    where: { name: name.trim(), departmentId }
   })
 
   if (existingItem) {
@@ -21,7 +21,7 @@ itemsRouter.post('/newItem', async (req, res) => {
   }
 
   try {
-    const newItem = await prisma.item.create({ data: { name, departmentId } })
+    const newItem = await prisma.item.create({ data: { name: name.trim(), departmentId } })
     res.json(newItem)
   } catch (e) {
     res.json('something went wrong!!')

@@ -30,15 +30,14 @@ const MainSidebar = () => {
     return params.id // Exported search parameters
   }
 
-  console.log(locaation.pathname)
 
   const userAuthority = JSON.parse(localStorage.getItem('user'))?.existingUser?.authority
 
-  const { data } = useQuery({
+  const { data, isError } = useQuery({
     queryKey: ['departments'],
     queryFn: getAllDepartments
   })
-
+//	const data = []
   return (
     <main
       className={clsx(
@@ -61,22 +60,22 @@ const MainSidebar = () => {
         <li className={rowStyle}>
           <button
             className={clsx(btnClass, {
-              'bg-white text-mainText': locaation.pathname === '/home'
+              'bg-white text-mainText': locaation.pathname === '/'
             })}
-            onClick={() => navigate('home')}
+            onClick={() => navigate('/')}
           >
             الرئيسية
             <HomeIcon
               style={{
                 height: 35,
                 width: 35,
-                fill: locaation.pathname === '/home' ? 'black' : 'white'
+                fill: locaation.pathname === '/' ? 'black' : 'white'
               }}
             />
           </button>
         </li>
 
-        {data &&
+        {data && !isError &&
           data?.map((item) => (
             <li
               key={item?.id}
@@ -107,7 +106,7 @@ const MainSidebar = () => {
         </li>
       </ul>
       <ul className="w-full bg-alert">
-        <li className={rowStyle}>
+        {/* <li className={rowStyle}>
           <button
             className={`${btnClass} text-white hover:bg-black/15 border-b-2 border-black/25`}
             onClick={() => dispatch(dialogActions.hadleOpenDialog('logout'))}
@@ -115,7 +114,7 @@ const MainSidebar = () => {
             تسجيل خروج
             <LogoutIcon style={{ height: 35, width: 35, fill: 'white' }} />
           </button>
-        </li>
+        </li> */}
         <li className={rowStyle}>
           <button
             className={`${btnClass} text-white hover:bg-black/15`}

@@ -14,8 +14,8 @@ import AddNewMenu from './pages/departmentPageChildren/AddNewMenu'
 import EditMenuPage from './pages/departmentPageChildren/EditMenuPage'
 
 function App() {
-  // const user = true
-  const { user } = UseAuthContext()
+  const user = true
+//  const { user } = UseAuthContext()
   const userAuthority = JSON.parse(localStorage.getItem('user'))?.existingUser?.authority
   const { logout } = useLogout()
   const [connectionState, setConnectionState] = useState('')
@@ -44,10 +44,10 @@ function App() {
           <div className="absolute w-screen h-screen flex justify-center items-center bg-black/55 z-20">
             <div className="bg-white w-[40rem] h-[15rem] py-10 px-4 rounded-xl flex justify-center items-center flex-col">
               <h1 className="text-3xl text-alert font-extrabold text-center mb-2">
-                !فشل الإتصال بالسيرفر
+                !فشل الإتصال بالسيرفر الداخلي
               </h1>
               <h1 className="text-lg font-bold text-mainText text-center">
-                الرجاء التأكد من الاتصال بالعنوان 192.168.0.5
+               قم بإعادة تشغيل الجهاز او اتصل بالدعم الفني
               </h1>
               <h2 className=" font-bold text-stone-600 text-center my-5">
                 ستتم إعادة المحاولة تلقائياً كل 15 ثانية
@@ -63,9 +63,10 @@ function App() {
         )}
         <HashRouter>
           <Routes>
-            <Route path="login" element={<LoginPage />} />
+            {/* <Route path="login" element={<LoginPage />} /> */}
             <Route path="/" element={user ? <RootLayout /> : <Navigate to="/login" />}>
-              <Route path="home" element={user ? <HomePage /> : <Navigate to="/login" />} />
+              {/* <Route path="home" element={user ? <HomePage /> : <Navigate to="/login" />} /> */}
+              <Route index element={user ? <HomePage /> : <Navigate to="/login" />} /> 
               <Route
                 path="department"
                 element={user ? <DepartmentPage /> : <Navigate to="/login" />}

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { dialogActions } from '../../util/slicers/dialogSlicer'
 import { useLogout } from '../../hooks/UseLogout'
 
+
 export default function CloseAppConfirmation() {
   const open = useSelector((state) => state.dialog.dialog)
   const dispatch = useDispatch()
@@ -17,6 +18,17 @@ export default function CloseAppConfirmation() {
   const handleClose = () => {
     dispatch(dialogActions.hadleOpenDialog(''))
   }
+
+  const handleShut = () => {
+    window.electronAPI.closeApp()
+      .then(() => {
+        console.log('App close request sent');
+      })
+      .catch((err) => {
+        console.error('Error closing app:', err);
+      })
+  }
+
 
   return (
     <React.Fragment>
@@ -37,10 +49,11 @@ export default function CloseAppConfirmation() {
         <DialogActions>
           <Button onClick={handleClose}>إلغاء</Button>
           <Button
-            onClick={() => {
-              logout()
-              window.close()
-            }}
+          onClick={ handleShut}
+            // onClick={() => {
+            //   logout()
+            //   window.close()
+            // }}
             autoFocus
           >
             تأكيد

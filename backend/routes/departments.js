@@ -12,7 +12,7 @@ departmentsRouter.post('/newDepartment', async (req, res) => {
   }
 
   const existingDepartment = await prisma.department.findUnique({
-    where: { name: name }
+    where: { name: name.trim() }
   })
 
   if (existingDepartment) {
@@ -20,7 +20,7 @@ departmentsRouter.post('/newDepartment', async (req, res) => {
   }
 
   try {
-    const newDepartment = await prisma.department.create({ data: { name } })
+    const newDepartment = await prisma.department.create({ data: { name: name.trim() } })
     res.json(newDepartment)
   } catch (e) {
     res.json('something went wrong!!')
