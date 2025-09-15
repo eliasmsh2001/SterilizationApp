@@ -28,8 +28,8 @@ export const getAllDepartments = async () => {
   return data
 }
 
-export const getDepartmentDetails = async ({ id }) => {
-  const response = await fetch(`${url}/departments/getDepDetes?id=${id}`)
+export const getDepartmentDetails = async ({ id, date }) => {
+  const response = await fetch(`${url}/departments/getDepDetes?id=${id}&date=${date}`)
   if (!response.ok) {
     throw Error('Something went Wrong!')
   }

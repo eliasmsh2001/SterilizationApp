@@ -49,13 +49,14 @@ model cart {
 
 model cartItem {
   id                String    @id @unique @default(uuid())
-  name              String    
-  quantity          Int 
-  date              String
+  name              String?    
+  quantity          Int?
+  date              String?
+  deviceNum         String?
   deliveringTime    String
-  preSterilizationClient    String
-  preSterilazationProvidor   String
-  toolState         String
+  preSterilizationClient    String?
+  preSterilazationProvidor   String?
+  toolState         String?
   cartId            Int
   cart        cart      @relation(fields: [cartId], references: [id])
 } 

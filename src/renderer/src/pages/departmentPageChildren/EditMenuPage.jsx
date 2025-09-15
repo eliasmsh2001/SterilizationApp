@@ -35,7 +35,7 @@ const EditMenuPage = () => {
         {data?.name}
       </h1>
       <NewMenuFormMainData />
-      <section className=" relative flex gap-4 flex-row-reverse h-[30rem]">
+      <section className=" relative flex gap-4 flex-row-reverse h-[40rem]">
         {data?.items && (
           <section className="w-[15rem] py-5 justify-start items-center flex-col flex gap-3  max-h-[35rem] overflow-y-scroll">
             {data.items?.map((item) => (
@@ -55,7 +55,7 @@ const EditMenuPage = () => {
 
         <div className="h-full w-1 bg-mainText " />
 
-        <div className="h-[30rem] overflow-scroll">
+        <div className="h-[40rem] overflow-scroll">
           <NewCartTable />
         </div>
       </section>

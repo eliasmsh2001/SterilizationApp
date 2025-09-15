@@ -5230,6 +5230,7 @@ export namespace Prisma {
     name: string | null
     quantity: number | null
     date: string | null
+    deviceNum: string | null
     deliveringTime: string | null
     preSterilizationClient: string | null
     preSterilazationProvidor: string | null
@@ -5242,6 +5243,7 @@ export namespace Prisma {
     name: string | null
     quantity: number | null
     date: string | null
+    deviceNum: string | null
     deliveringTime: string | null
     preSterilizationClient: string | null
     preSterilazationProvidor: string | null
@@ -5254,6 +5256,7 @@ export namespace Prisma {
     name: number
     quantity: number
     date: number
+    deviceNum: number
     deliveringTime: number
     preSterilizationClient: number
     preSterilazationProvidor: number
@@ -5278,6 +5281,7 @@ export namespace Prisma {
     name?: true
     quantity?: true
     date?: true
+    deviceNum?: true
     deliveringTime?: true
     preSterilizationClient?: true
     preSterilazationProvidor?: true
@@ -5290,6 +5294,7 @@ export namespace Prisma {
     name?: true
     quantity?: true
     date?: true
+    deviceNum?: true
     deliveringTime?: true
     preSterilizationClient?: true
     preSterilazationProvidor?: true
@@ -5302,6 +5307,7 @@ export namespace Prisma {
     name?: true
     quantity?: true
     date?: true
+    deviceNum?: true
     deliveringTime?: true
     preSterilizationClient?: true
     preSterilazationProvidor?: true
@@ -5398,13 +5404,14 @@ export namespace Prisma {
 
   export type CartItemGroupByOutputType = {
     id: string
-    name: string
-    quantity: number
-    date: string
+    name: string | null
+    quantity: number | null
+    date: string | null
+    deviceNum: string | null
     deliveringTime: string
-    preSterilizationClient: string
-    preSterilazationProvidor: string
-    toolState: string
+    preSterilizationClient: string | null
+    preSterilazationProvidor: string | null
+    toolState: string | null
     cartId: number
     _count: CartItemCountAggregateOutputType | null
     _avg: CartItemAvgAggregateOutputType | null
@@ -5432,6 +5439,7 @@ export namespace Prisma {
     name?: boolean
     quantity?: boolean
     date?: boolean
+    deviceNum?: boolean
     deliveringTime?: boolean
     preSterilizationClient?: boolean
     preSterilazationProvidor?: boolean
@@ -5447,6 +5455,7 @@ export namespace Prisma {
     name?: boolean
     quantity?: boolean
     date?: boolean
+    deviceNum?: boolean
     deliveringTime?: boolean
     preSterilizationClient?: boolean
     preSterilazationProvidor?: boolean
@@ -5454,7 +5463,7 @@ export namespace Prisma {
     cartId?: boolean
   }
 
-  export type cartItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "quantity" | "date" | "deliveringTime" | "preSterilizationClient" | "preSterilazationProvidor" | "toolState" | "cartId", ExtArgs["result"]["cartItem"]>
+  export type cartItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "quantity" | "date" | "deviceNum" | "deliveringTime" | "preSterilizationClient" | "preSterilazationProvidor" | "toolState" | "cartId", ExtArgs["result"]["cartItem"]>
   export type cartItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cart?: boolean | cartDefaultArgs<ExtArgs>
   }
@@ -5466,13 +5475,14 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      name: string
-      quantity: number
-      date: string
+      name: string | null
+      quantity: number | null
+      date: string | null
+      deviceNum: string | null
       deliveringTime: string
-      preSterilizationClient: string
-      preSterilazationProvidor: string
-      toolState: string
+      preSterilizationClient: string | null
+      preSterilazationProvidor: string | null
+      toolState: string | null
       cartId: number
     }, ExtArgs["result"]["cartItem"]>
     composites: {}
@@ -5848,6 +5858,7 @@ export namespace Prisma {
     readonly name: FieldRef<"cartItem", 'String'>
     readonly quantity: FieldRef<"cartItem", 'Int'>
     readonly date: FieldRef<"cartItem", 'String'>
+    readonly deviceNum: FieldRef<"cartItem", 'String'>
     readonly deliveringTime: FieldRef<"cartItem", 'String'>
     readonly preSterilizationClient: FieldRef<"cartItem", 'String'>
     readonly preSterilazationProvidor: FieldRef<"cartItem", 'String'>
@@ -8173,6 +8184,7 @@ export namespace Prisma {
     name: 'name',
     quantity: 'quantity',
     date: 'date',
+    deviceNum: 'deviceNum',
     deliveringTime: 'deliveringTime',
     preSterilizationClient: 'preSterilizationClient',
     preSterilazationProvidor: 'preSterilazationProvidor',
@@ -8262,6 +8274,7 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     date: 'date',
+    deviceNum: 'deviceNum',
     deliveringTime: 'deliveringTime',
     preSterilizationClient: 'preSterilizationClient',
     preSterilazationProvidor: 'preSterilazationProvidor',
@@ -8532,26 +8545,28 @@ export namespace Prisma {
     OR?: cartItemWhereInput[]
     NOT?: cartItemWhereInput | cartItemWhereInput[]
     id?: StringFilter<"cartItem"> | string
-    name?: StringFilter<"cartItem"> | string
-    quantity?: IntFilter<"cartItem"> | number
-    date?: StringFilter<"cartItem"> | string
+    name?: StringNullableFilter<"cartItem"> | string | null
+    quantity?: IntNullableFilter<"cartItem"> | number | null
+    date?: StringNullableFilter<"cartItem"> | string | null
+    deviceNum?: StringNullableFilter<"cartItem"> | string | null
     deliveringTime?: StringFilter<"cartItem"> | string
-    preSterilizationClient?: StringFilter<"cartItem"> | string
-    preSterilazationProvidor?: StringFilter<"cartItem"> | string
-    toolState?: StringFilter<"cartItem"> | string
+    preSterilizationClient?: StringNullableFilter<"cartItem"> | string | null
+    preSterilazationProvidor?: StringNullableFilter<"cartItem"> | string | null
+    toolState?: StringNullableFilter<"cartItem"> | string | null
     cartId?: IntFilter<"cartItem"> | number
     cart?: XOR<CartScalarRelationFilter, cartWhereInput>
   }
 
   export type cartItemOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrder
-    quantity?: SortOrder
-    date?: SortOrder
+    name?: SortOrderInput | SortOrder
+    quantity?: SortOrderInput | SortOrder
+    date?: SortOrderInput | SortOrder
+    deviceNum?: SortOrderInput | SortOrder
     deliveringTime?: SortOrder
-    preSterilizationClient?: SortOrder
-    preSterilazationProvidor?: SortOrder
-    toolState?: SortOrder
+    preSterilizationClient?: SortOrderInput | SortOrder
+    preSterilazationProvidor?: SortOrderInput | SortOrder
+    toolState?: SortOrderInput | SortOrder
     cartId?: SortOrder
     cart?: cartOrderByWithRelationInput
     _relevance?: cartItemOrderByRelevanceInput
@@ -8562,26 +8577,28 @@ export namespace Prisma {
     AND?: cartItemWhereInput | cartItemWhereInput[]
     OR?: cartItemWhereInput[]
     NOT?: cartItemWhereInput | cartItemWhereInput[]
-    name?: StringFilter<"cartItem"> | string
-    quantity?: IntFilter<"cartItem"> | number
-    date?: StringFilter<"cartItem"> | string
+    name?: StringNullableFilter<"cartItem"> | string | null
+    quantity?: IntNullableFilter<"cartItem"> | number | null
+    date?: StringNullableFilter<"cartItem"> | string | null
+    deviceNum?: StringNullableFilter<"cartItem"> | string | null
     deliveringTime?: StringFilter<"cartItem"> | string
-    preSterilizationClient?: StringFilter<"cartItem"> | string
-    preSterilazationProvidor?: StringFilter<"cartItem"> | string
-    toolState?: StringFilter<"cartItem"> | string
+    preSterilizationClient?: StringNullableFilter<"cartItem"> | string | null
+    preSterilazationProvidor?: StringNullableFilter<"cartItem"> | string | null
+    toolState?: StringNullableFilter<"cartItem"> | string | null
     cartId?: IntFilter<"cartItem"> | number
     cart?: XOR<CartScalarRelationFilter, cartWhereInput>
   }, "id" | "id">
 
   export type cartItemOrderByWithAggregationInput = {
     id?: SortOrder
-    name?: SortOrder
-    quantity?: SortOrder
-    date?: SortOrder
+    name?: SortOrderInput | SortOrder
+    quantity?: SortOrderInput | SortOrder
+    date?: SortOrderInput | SortOrder
+    deviceNum?: SortOrderInput | SortOrder
     deliveringTime?: SortOrder
-    preSterilizationClient?: SortOrder
-    preSterilazationProvidor?: SortOrder
-    toolState?: SortOrder
+    preSterilizationClient?: SortOrderInput | SortOrder
+    preSterilazationProvidor?: SortOrderInput | SortOrder
+    toolState?: SortOrderInput | SortOrder
     cartId?: SortOrder
     _count?: cartItemCountOrderByAggregateInput
     _avg?: cartItemAvgOrderByAggregateInput
@@ -8595,13 +8612,14 @@ export namespace Prisma {
     OR?: cartItemScalarWhereWithAggregatesInput[]
     NOT?: cartItemScalarWhereWithAggregatesInput | cartItemScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"cartItem"> | string
-    name?: StringWithAggregatesFilter<"cartItem"> | string
-    quantity?: IntWithAggregatesFilter<"cartItem"> | number
-    date?: StringWithAggregatesFilter<"cartItem"> | string
+    name?: StringNullableWithAggregatesFilter<"cartItem"> | string | null
+    quantity?: IntNullableWithAggregatesFilter<"cartItem"> | number | null
+    date?: StringNullableWithAggregatesFilter<"cartItem"> | string | null
+    deviceNum?: StringNullableWithAggregatesFilter<"cartItem"> | string | null
     deliveringTime?: StringWithAggregatesFilter<"cartItem"> | string
-    preSterilizationClient?: StringWithAggregatesFilter<"cartItem"> | string
-    preSterilazationProvidor?: StringWithAggregatesFilter<"cartItem"> | string
-    toolState?: StringWithAggregatesFilter<"cartItem"> | string
+    preSterilizationClient?: StringNullableWithAggregatesFilter<"cartItem"> | string | null
+    preSterilazationProvidor?: StringNullableWithAggregatesFilter<"cartItem"> | string | null
+    toolState?: StringNullableWithAggregatesFilter<"cartItem"> | string | null
     cartId?: IntWithAggregatesFilter<"cartItem"> | number
   }
 
@@ -8914,84 +8932,91 @@ export namespace Prisma {
 
   export type cartItemCreateInput = {
     id?: string
-    name: string
-    quantity: number
-    date: string
+    name?: string | null
+    quantity?: number | null
+    date?: string | null
+    deviceNum?: string | null
     deliveringTime: string
-    preSterilizationClient: string
-    preSterilazationProvidor: string
-    toolState: string
+    preSterilizationClient?: string | null
+    preSterilazationProvidor?: string | null
+    toolState?: string | null
     cart: cartCreateNestedOneWithoutItemsInput
   }
 
   export type cartItemUncheckedCreateInput = {
     id?: string
-    name: string
-    quantity: number
-    date: string
+    name?: string | null
+    quantity?: number | null
+    date?: string | null
+    deviceNum?: string | null
     deliveringTime: string
-    preSterilizationClient: string
-    preSterilazationProvidor: string
-    toolState: string
+    preSterilizationClient?: string | null
+    preSterilazationProvidor?: string | null
+    toolState?: string | null
     cartId: number
   }
 
   export type cartItemUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    date?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: NullableIntFieldUpdateOperationsInput | number | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceNum?: NullableStringFieldUpdateOperationsInput | string | null
     deliveringTime?: StringFieldUpdateOperationsInput | string
-    preSterilizationClient?: StringFieldUpdateOperationsInput | string
-    preSterilazationProvidor?: StringFieldUpdateOperationsInput | string
-    toolState?: StringFieldUpdateOperationsInput | string
+    preSterilizationClient?: NullableStringFieldUpdateOperationsInput | string | null
+    preSterilazationProvidor?: NullableStringFieldUpdateOperationsInput | string | null
+    toolState?: NullableStringFieldUpdateOperationsInput | string | null
     cart?: cartUpdateOneRequiredWithoutItemsNestedInput
   }
 
   export type cartItemUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    date?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: NullableIntFieldUpdateOperationsInput | number | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceNum?: NullableStringFieldUpdateOperationsInput | string | null
     deliveringTime?: StringFieldUpdateOperationsInput | string
-    preSterilizationClient?: StringFieldUpdateOperationsInput | string
-    preSterilazationProvidor?: StringFieldUpdateOperationsInput | string
-    toolState?: StringFieldUpdateOperationsInput | string
+    preSterilizationClient?: NullableStringFieldUpdateOperationsInput | string | null
+    preSterilazationProvidor?: NullableStringFieldUpdateOperationsInput | string | null
+    toolState?: NullableStringFieldUpdateOperationsInput | string | null
     cartId?: IntFieldUpdateOperationsInput | number
   }
 
   export type cartItemCreateManyInput = {
     id?: string
-    name: string
-    quantity: number
-    date: string
+    name?: string | null
+    quantity?: number | null
+    date?: string | null
+    deviceNum?: string | null
     deliveringTime: string
-    preSterilizationClient: string
-    preSterilazationProvidor: string
-    toolState: string
+    preSterilizationClient?: string | null
+    preSterilazationProvidor?: string | null
+    toolState?: string | null
     cartId: number
   }
 
   export type cartItemUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    date?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: NullableIntFieldUpdateOperationsInput | number | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceNum?: NullableStringFieldUpdateOperationsInput | string | null
     deliveringTime?: StringFieldUpdateOperationsInput | string
-    preSterilizationClient?: StringFieldUpdateOperationsInput | string
-    preSterilazationProvidor?: StringFieldUpdateOperationsInput | string
-    toolState?: StringFieldUpdateOperationsInput | string
+    preSterilizationClient?: NullableStringFieldUpdateOperationsInput | string | null
+    preSterilazationProvidor?: NullableStringFieldUpdateOperationsInput | string | null
+    toolState?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type cartItemUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    date?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: NullableIntFieldUpdateOperationsInput | number | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceNum?: NullableStringFieldUpdateOperationsInput | string | null
     deliveringTime?: StringFieldUpdateOperationsInput | string
-    preSterilizationClient?: StringFieldUpdateOperationsInput | string
-    preSterilazationProvidor?: StringFieldUpdateOperationsInput | string
-    toolState?: StringFieldUpdateOperationsInput | string
+    preSterilizationClient?: NullableStringFieldUpdateOperationsInput | string | null
+    preSterilazationProvidor?: NullableStringFieldUpdateOperationsInput | string | null
+    toolState?: NullableStringFieldUpdateOperationsInput | string | null
     cartId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -9342,6 +9367,17 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type CartScalarRelationFilter = {
     is?: cartWhereInput
     isNot?: cartWhereInput
@@ -9358,6 +9394,7 @@ export namespace Prisma {
     name?: SortOrder
     quantity?: SortOrder
     date?: SortOrder
+    deviceNum?: SortOrder
     deliveringTime?: SortOrder
     preSterilizationClient?: SortOrder
     preSterilazationProvidor?: SortOrder
@@ -9375,6 +9412,7 @@ export namespace Prisma {
     name?: SortOrder
     quantity?: SortOrder
     date?: SortOrder
+    deviceNum?: SortOrder
     deliveringTime?: SortOrder
     preSterilizationClient?: SortOrder
     preSterilazationProvidor?: SortOrder
@@ -9387,6 +9425,7 @@ export namespace Prisma {
     name?: SortOrder
     quantity?: SortOrder
     date?: SortOrder
+    deviceNum?: SortOrder
     deliveringTime?: SortOrder
     preSterilizationClient?: SortOrder
     preSterilazationProvidor?: SortOrder
@@ -9397,6 +9436,22 @@ export namespace Prisma {
   export type cartItemSumOrderByAggregateInput = {
     quantity?: SortOrder
     cartId?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type DeviseSesstionsListRelationFilter = {
@@ -9428,17 +9483,6 @@ export namespace Prisma {
   export type deviceMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-  }
-
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type DeviceScalarRelationFilter = {
@@ -9487,22 +9531,6 @@ export namespace Prisma {
   export type deviseSesstionsSumOrderByAggregateInput = {
     id?: SortOrder
     itemsQuantity?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -9681,6 +9709,14 @@ export namespace Prisma {
     connect?: cartWhereUniqueInput
   }
 
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type cartUpdateOneRequiredWithoutItemsNestedInput = {
     create?: XOR<cartCreateWithoutItemsInput, cartUncheckedCreateWithoutItemsInput>
     connectOrCreate?: cartCreateOrConnectWithoutItemsInput
@@ -9735,14 +9771,6 @@ export namespace Prisma {
     create?: XOR<deviceCreateWithoutSessionsInput, deviceUncheckedCreateWithoutSessionsInput>
     connectOrCreate?: deviceCreateOrConnectWithoutSessionsInput
     connect?: deviceWhereUniqueInput
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type deviceUpdateOneRequiredWithoutSessionsNestedInput = {
@@ -10057,24 +10085,26 @@ export namespace Prisma {
 
   export type cartItemCreateWithoutCartInput = {
     id?: string
-    name: string
-    quantity: number
-    date: string
+    name?: string | null
+    quantity?: number | null
+    date?: string | null
+    deviceNum?: string | null
     deliveringTime: string
-    preSterilizationClient: string
-    preSterilazationProvidor: string
-    toolState: string
+    preSterilizationClient?: string | null
+    preSterilazationProvidor?: string | null
+    toolState?: string | null
   }
 
   export type cartItemUncheckedCreateWithoutCartInput = {
     id?: string
-    name: string
-    quantity: number
-    date: string
+    name?: string | null
+    quantity?: number | null
+    date?: string | null
+    deviceNum?: string | null
     deliveringTime: string
-    preSterilizationClient: string
-    preSterilazationProvidor: string
-    toolState: string
+    preSterilizationClient?: string | null
+    preSterilazationProvidor?: string | null
+    toolState?: string | null
   }
 
   export type cartItemCreateOrConnectWithoutCartInput = {
@@ -10131,13 +10161,14 @@ export namespace Prisma {
     OR?: cartItemScalarWhereInput[]
     NOT?: cartItemScalarWhereInput | cartItemScalarWhereInput[]
     id?: StringFilter<"cartItem"> | string
-    name?: StringFilter<"cartItem"> | string
-    quantity?: IntFilter<"cartItem"> | number
-    date?: StringFilter<"cartItem"> | string
+    name?: StringNullableFilter<"cartItem"> | string | null
+    quantity?: IntNullableFilter<"cartItem"> | number | null
+    date?: StringNullableFilter<"cartItem"> | string | null
+    deviceNum?: StringNullableFilter<"cartItem"> | string | null
     deliveringTime?: StringFilter<"cartItem"> | string
-    preSterilizationClient?: StringFilter<"cartItem"> | string
-    preSterilazationProvidor?: StringFilter<"cartItem"> | string
-    toolState?: StringFilter<"cartItem"> | string
+    preSterilizationClient?: StringNullableFilter<"cartItem"> | string | null
+    preSterilazationProvidor?: StringNullableFilter<"cartItem"> | string | null
+    toolState?: StringNullableFilter<"cartItem"> | string | null
     cartId?: IntFilter<"cartItem"> | number
   }
 
@@ -10343,46 +10374,50 @@ export namespace Prisma {
 
   export type cartItemCreateManyCartInput = {
     id?: string
-    name: string
-    quantity: number
-    date: string
+    name?: string | null
+    quantity?: number | null
+    date?: string | null
+    deviceNum?: string | null
     deliveringTime: string
-    preSterilizationClient: string
-    preSterilazationProvidor: string
-    toolState: string
+    preSterilizationClient?: string | null
+    preSterilazationProvidor?: string | null
+    toolState?: string | null
   }
 
   export type cartItemUpdateWithoutCartInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    date?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: NullableIntFieldUpdateOperationsInput | number | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceNum?: NullableStringFieldUpdateOperationsInput | string | null
     deliveringTime?: StringFieldUpdateOperationsInput | string
-    preSterilizationClient?: StringFieldUpdateOperationsInput | string
-    preSterilazationProvidor?: StringFieldUpdateOperationsInput | string
-    toolState?: StringFieldUpdateOperationsInput | string
+    preSterilizationClient?: NullableStringFieldUpdateOperationsInput | string | null
+    preSterilazationProvidor?: NullableStringFieldUpdateOperationsInput | string | null
+    toolState?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type cartItemUncheckedUpdateWithoutCartInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    date?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: NullableIntFieldUpdateOperationsInput | number | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceNum?: NullableStringFieldUpdateOperationsInput | string | null
     deliveringTime?: StringFieldUpdateOperationsInput | string
-    preSterilizationClient?: StringFieldUpdateOperationsInput | string
-    preSterilazationProvidor?: StringFieldUpdateOperationsInput | string
-    toolState?: StringFieldUpdateOperationsInput | string
+    preSterilizationClient?: NullableStringFieldUpdateOperationsInput | string | null
+    preSterilazationProvidor?: NullableStringFieldUpdateOperationsInput | string | null
+    toolState?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type cartItemUncheckedUpdateManyWithoutCartInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    date?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: NullableIntFieldUpdateOperationsInput | number | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    deviceNum?: NullableStringFieldUpdateOperationsInput | string | null
     deliveringTime?: StringFieldUpdateOperationsInput | string
-    preSterilizationClient?: StringFieldUpdateOperationsInput | string
-    preSterilazationProvidor?: StringFieldUpdateOperationsInput | string
-    toolState?: StringFieldUpdateOperationsInput | string
+    preSterilizationClient?: NullableStringFieldUpdateOperationsInput | string | null
+    preSterilazationProvidor?: NullableStringFieldUpdateOperationsInput | string | null
+    toolState?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type deviseSesstionsCreateManyDeviceInput = {

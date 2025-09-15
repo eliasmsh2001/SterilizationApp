@@ -31,9 +31,9 @@ const AddNewMenu = () => {
         {data?.name}
       </h1>
       <NewMenuFormMainData />
-      <section className=" relative flex gap-4 flex-row-reverse h-[30rem]">
+      <section className=" relative flex gap-4 flex-row-reverse h-[40rem]">
         {data?.items && (
-          <section className="w-[15rem] py-5 justify-start items-center flex-col flex gap-3  max-h-[35rem] overflow-y-scroll">
+          <section className="w-[15rem] py-5 justify-start items-center flex-col flex gap-3 h-[40rem] overflow-y-scroll">
             {data.items?.map((item) => (
               <button
                 onClick={() => {

@@ -62,7 +62,7 @@ devicesRouter.put('/editSession', async (req, res) => {
 
     // Create a date object (use any date, we only care about time)
     const date = new Date()
-    date.setHours(hours + 2, minutes, 0, 0)
+    date.setHours(hours + 2, minutes + 15, 0, 0)
 
     // Format back to HH:MM
     const newHours = date.getHours().toString().padStart(2, '0')

@@ -141,7 +141,9 @@ export default function CartDetailsDialog() {
                 <tr className="border-2 border-mainText text-[0.6rem]">
                   <th className="w-96 border-l-2">اسم الصنف</th>
                   <th className="w-16 border-l-2">العدد</th>
-                  <th className="w-24 border-l-2">التاريخ</th>
+                  <th className="w-16 border-l-2">الجهاز</th>
+
+                  {/* <th className="w-24 border-l-2">التاريخ</th> */}
                   <th className="w-24 border-l-2">وقت التسليم</th>
                   <th className="w-40 border-l-2">المستلم قبل التعقيم</th>
                   <th className="w-40 border-l-2">المسلم قبل التعقيم</th>
@@ -162,7 +164,9 @@ export default function CartDetailsDialog() {
                     >
                       <td>{item?.name}</td>
                       <td>{item?.quantity}</td>
-                      <td>{item?.date}</td>
+                      <td>{item?.deviceNum}</td>
+
+                      {/* <td>{item?.date}</td> */}
                       <td>{item?.deliveringTime}</td>
                       <td>{item?.preSterilizationClient}</td>
                       <td>{item?.preSterilazationProvidor}</td>

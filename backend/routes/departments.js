@@ -38,11 +38,11 @@ departmentsRouter.get('/getDepartments', async (req, res) => {
 })
 
 departmentsRouter.get('/getDepDetes', async (req, res) => {
-  const { id } = req.query
+  const { id, date } = req.query
   try {
     const department = await prisma.department.findUnique({
       where: { id },
-      include: { carts: { include: { items: true } }, items: true }
+      include: { carts: {where: {date}, include: { items: true } }, items: true }
     })
     res.json(department)
   } catch (e) {

@@ -1,12 +1,14 @@
 import { useQuery } from '@tanstack/react-query'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router'
 import { getDepartmentDetails } from '../../util/apis/departmentsAPIs'
 import { useDispatch } from 'react-redux'
 import { dialogActions } from '../../util/slicers/dialogSlicer'
 import clsx from 'clsx'
+import { cartActions } from '../../util/slicers/cartSlicer'
 
 const DepartmentOverViewPage = () => {
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10))
   const [searchParams] = useSearchParams()
   const exportSearchParams = () => {
     const params = Object.fromEntries(searchParams.entries())
@@ -16,8 +18,8 @@ const DepartmentOverViewPage = () => {
   const dispatch = useDispatch()
 
   const { data } = useQuery({
-    queryKey: ['departmentDetails', exportSearchParams()],
-    queryFn: () => getDepartmentDetails({ id: exportSearchParams() })
+    queryKey: ['departmentDetails', exportSearchParams(), date],
+    queryFn: () => getDepartmentDetails({ id: exportSearchParams(),  date })
   })
   return data ? (
     <section className="relative flex p-4 gap-24 h-[35rem]  mt-6" dir="rtl">
@@ -26,12 +28,25 @@ const DepartmentOverViewPage = () => {
       </h1>
 
       <div className="">
-        <button
-          onClick={() => navigate(`newMenu?id=${exportSearchParams()}`)}
+       <div className='flex justify-between items-center'>
+          <button
+          onClick={() => {
+            
+            dispatch(cartActions.handleFinishingCart())
+            navigate(`newMenu?id=${exportSearchParams()}`)}}
           className="bg-unique py-2 px-6 font-bold text-white my-4 hover:opacity-75 hover:scale-105 duration-200"
         >
           قائمة جديدة
         </button>
+       
+         <input
+          className="p-2 text-mainText border-2 border-mainText rounded-md outline-0 focus:border-mainBlue"
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
+        
+          </div>
         <table dir="rtl">
           <thead className="bg-mainText text-white">
             <tr className="border-2 border-mainText">

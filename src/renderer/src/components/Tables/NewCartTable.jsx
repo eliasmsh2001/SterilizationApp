@@ -20,7 +20,9 @@ const NewCartTable = ({ data }) => {
           <tr className="border-2 border-mainText">
             <th className="w-72 border-l-2">اسم الصنف</th>
             <th className="w-16 border-l-2">العدد</th>
-            <th className="w-28 border-l-2">التاريخ</th>
+            <th className="w-16 border-l-2">الجهاز</th>
+
+            {/* <th className="w-28 border-l-2">التاريخ</th> */}
             <th className="w-24 border-l-2">وقت التسليم</th>
             <th className="w-40 border-l-2">المستلم ق.التعقيم</th>
             <th className="w-40 border-l-2">المسلم ق.التعقيم</th>
@@ -55,7 +57,24 @@ const NewCartTable = ({ data }) => {
                     }
                   />
                 </td>
-                <td className="w-28 border-l-2 border-mainText ">
+                <td className="w-16 border-l-2 border-mainText">
+                  <input
+                    type="text"
+                    className="w-full bg-transparent outline-0 px-2"
+                    placeholder="الرقم..."
+                    dir="rtl"
+                    value={item.deviceNum}
+                    onChange={(event) =>
+                      dispatch(
+                        cartActions.handleEditItem({
+                          id: item.id,
+                          deviceNum: event.target.value
+                        })
+                      )
+                    }
+                  />
+                </td>
+                {/* <td className="w-28 border-l-2 border-mainText ">
                   <input
                     type="date"
                     className="w-full bg-transparent outline-0 text-xs"
@@ -71,10 +90,10 @@ const NewCartTable = ({ data }) => {
                       )
                     }
                   />
-                </td>
+                </td> */}
                 <td className="w-24 border-l-2 border-mainText">
                   <input
-                    type="text"
+                    type="time"
                     className="w-full bg-transparent outline-0 text-xs px-2"
                     placeholder="وقت التسليم..."
                     dir="rtl"
