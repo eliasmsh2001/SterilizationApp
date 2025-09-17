@@ -1,6 +1,5 @@
 const express = require('express')
 const { PrismaClient } = require('../generated/prisma/client')
-const cron = require('node-cron')
 
 const itemsRouter = express.Router()
 const prisma = new PrismaClient()

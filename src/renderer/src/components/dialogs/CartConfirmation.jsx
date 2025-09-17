@@ -37,7 +37,6 @@ export default function CartConfirmation() {
       queryClient.invalidateQueries({ queryKey: ['departmentDetails'] })
       dispatch(cartActions.handleFinishingCart())
       navigate(`/department?id=${exportSearchParams()}`)
-      handleOpenDialogDetails
     },
     onError: (error) => {
       setError(error.message)

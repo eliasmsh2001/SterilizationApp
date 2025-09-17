@@ -13,8 +13,11 @@ export const addNewCart = async ({ cartData, cartItems, departmentId }) => {
     if (response.status === 400) {
       throw Error('!تأكد من تعبئة جميع البيانات')
     }
-    if (response.status === 401) {
+    else if (response.status === 401) {
       throw Error('!تأكد من تعبئة جميع بيانات الأصناف')
+    }
+    else {
+      throw Error('!حدث خطأ ما')
     }
   }
 

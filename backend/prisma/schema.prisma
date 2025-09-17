@@ -37,8 +37,8 @@ model item {
 
 model cart {
   id                        Int         @unique @id @default(autoincrement())
-  date                      String
-  day                       String
+  date                      String?
+  day                       String?
   machineEnteringTime       String?
   machineLeavingTime        String?
   sterilazationState        String?
@@ -53,7 +53,7 @@ model cartItem {
   quantity          Int?
   date              String?
   deviceNum         String?
-  deliveringTime    String
+  deliveringTime    String?
   preSterilizationClient    String?
   preSterilazationProvidor   String?
   toolState         String?

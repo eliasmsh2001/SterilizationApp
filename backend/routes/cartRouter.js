@@ -70,7 +70,11 @@ cartsRouter.post('/newCart', async (req, res) => {
 
     res.json(newCart, newCartItems)
   } catch (e) {
-    res.json('something went wrong!!')
+    res.json({
+      success: false,
+      message: 'something went wrong!!'
+    })
+    
   }
 })
 cartsRouter.put('/editCart', async (req, res) => {
