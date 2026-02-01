@@ -145,8 +145,8 @@ export default function CartDetailsDialog() {
 
                   {/* <th className="w-24 border-l-2">التاريخ</th> */}
                   <th className="w-24 border-l-2">وقت التسليم</th>
-                  <th className="w-40 border-l-2">المستلم قبل التعقيم</th>
-                  <th className="w-40 border-l-2">المسلم قبل التعقيم</th>
+                   <th className="w-40 border-l-2">فني التعقيم</th>
+                  <th className="w-40 border-l-2">مسلم الأداة</th>
                   <th className="w-24">حالة الأداة</th>
                 </tr>
               </thead>

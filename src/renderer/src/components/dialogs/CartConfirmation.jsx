@@ -43,6 +43,22 @@ export default function CartConfirmation() {
     }
   })
 
+
+  const handleSubmit = ()  => {
+                    
+          if(!cartItems){
+            return setError("حدث خطأ ما")
+          }else if(cartItems?.length > 30){
+            return setError(
+                          `الحد الأعلى للأصناف هو 30، قم بإزالة عدد ${cartItems?.length - 30} من الأصناف`
+                        )
+          }else {
+            mutate({ cartData, cartItems, departmentId: exportSearchParams() })
+          }
+
+
+  }
+
   return (
     <React.Fragment>
       <Dialog
@@ -75,13 +91,7 @@ export default function CartConfirmation() {
             {!error && (
               <div className="flex justify-center gap-4 my-4">
                 <button
-                  onClick={() =>
-                    cartItems?.length > 30
-                      ? setError(
-                          `الحد الأعلى للأصناف هو 30، قم بإزالة عدد ${cartItems?.length - 30} من الأصناف`
-                        )
-                      : mutate({ cartData, cartItems, departmentId: exportSearchParams() })
-                  }
+                  onClick={handleSubmit}
                   className="bg-mainBlue text-white font-bold py-2 w-24 rounded-md hover:scale-105 hover:opacity-50 duration-200"
                 >
                   تأكيد

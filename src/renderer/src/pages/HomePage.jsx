@@ -19,7 +19,7 @@ const HomePage = () => {
     queryKey: ['departments'],
     queryFn: getAllDepartments
   })
-  const { data: devicesData } = useQuery({
+  const { data: devicesData, isError:devicesIsError } = useQuery({
     queryKey: ['devices', date],
     queryFn: () => getDevicesData({ date })
   })
@@ -81,7 +81,7 @@ const HomePage = () => {
           onChange={(e) => setDate(e.target.value)}
         />
         <div className="flex gap-6 justify-center w-full">
-          {devicesData &&
+          {devicesData && !devicesIsError &&
             devicesData?.map((item) => (
               <div
                 key={item?.id}
